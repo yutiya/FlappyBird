@@ -2,7 +2,7 @@
 //  AtlasLoader.hpp
 //  FlappyBird
 //
-//  Created by 夏旸 on 16/7/16.
+//  Created by Meone on 16/7/16.
 //
 //
 

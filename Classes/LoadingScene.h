@@ -2,7 +2,7 @@
 //  LoadingScene.hpp
 //  FlappyBird
 //
-//  Created by 夏旸 on 16/7/16.
+//  Created by Meone on 16/7/16.
 //
 //
 
@@ -16,14 +16,15 @@
 USING_NS_CC;
 using namespace CocosDenshion;
 
-class LoadingScene : public Scene
+class LoadingScene : public Layer
 {
 public:
+	static cocos2d::Scene *createScene();
+
     LoadingScene();
     ~LoadingScene();
     virtual bool init();
     CREATE_FUNC(LoadingScene);
-    void OnEnter();
 private:
     void loadingCallBack(Texture2D *texture);
 };

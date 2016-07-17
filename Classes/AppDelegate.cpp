@@ -3,10 +3,10 @@
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
+static cocos2d::Size designResolutionSize = cocos2d::Size(288, 512);
+static cocos2d::Size smallResolutionSize = cocos2d::Size(288, 512);
+static cocos2d::Size mediumResolutionSize = cocos2d::Size(288, 512);
+static cocos2d::Size largeResolutionSize = cocos2d::Size(288, 512);
 
 AppDelegate::AppDelegate() {
 
@@ -39,7 +39,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::create("My Game");
+        glview = GLViewImpl::create("Meone Game");
         director->setOpenGLView(glview);
     }
 
@@ -50,8 +50,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-    Size frameSize = glview->getFrameSize();
+	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+	glview->setFrameSize(designResolutionSize.width, designResolutionSize.height);
+	/*
+	Size frameSize = glview->getFrameSize();
     // if the frame's height is larger than the height of medium size.
     if (frameSize.height > mediumResolutionSize.height)
     {        
@@ -67,11 +69,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
-
+	*/
     register_all_packages();
 
+	this->setResourceSearchResolution();
+
     // create a scene. it's an autorelease object
-    auto scene = LoadingScene::create();
+    auto scene = LoadingScene::createScene();
 
     // run
     director->runWithScene(scene);
@@ -93,4 +97,14 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+void AppDelegate::setResourceSearchResolution()
+{
+	std::vector<std::string> paths;
+	paths.push_back("images");
+	paths.push_back("sounds");
+	paths.push_back("fonts");
+
+	FileUtils::getInstance()->setSearchResolutionsOrder(paths);
 }

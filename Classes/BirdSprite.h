@@ -10,7 +10,7 @@
 #define BirdSprite_h
 
 #include "cocos2d.h"
-#include "AtlasLoader.h"
+
 
 USING_NS_CC;
 

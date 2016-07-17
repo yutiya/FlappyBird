@@ -2,7 +2,7 @@
 //  WelcomeLayer.hpp
 //  FlappyBird
 //
-//  Created by 夏旸 on 16/7/16.
+//  Created by Meone on 16/7/16.
 //
 //
 
@@ -10,16 +10,12 @@
 #define WelcomeLayer_h
 
 #include "cocos2d.h"
-#include "AtlasLoader.h"
-#include "SimpleAudioEngine.h"
-#include "CCMenuItem.h"
-#include "time.h"
+#include "BirdSprite.h"
 
 USING_NS_CC;
-using namespace std;
-using namespace CocosDenshion;
 
-const int START_BUTTON_TAG = 100;
+
+const int START_BUTTON_TAG = 998;
 
 class WelcomeLayer : public Layer
 {
@@ -36,6 +32,7 @@ private:
     Sprite *land1;
     Sprite *land2;
     
+	BirdSprite *bird;
 };
 
 #endif /* WelcomeLayer_h */

@@ -2,11 +2,12 @@
 //  WelcomeScene.cpp
 //  FlappyBird
 //
-//  Created by 夏旸 on 16/7/16.
+//  Created by Meone on 16/7/16.
 //
 //
 
-#include "WelcomeScene.hp"
+#include "WelcomeScene.h"
+#include "WelcomeLayer.h"
 
 WelcomeScene::WelcomeScene(){}
 
@@ -14,13 +15,11 @@ WelcomeScene::~WelcomeScene(){}
 
 bool WelcomeScene::init()
 {
-    bool bRet = false;
-    do {
-        CC_BREAK_IF(!Scene::init());
-        auto _welcomeLayer = WelcomeLayer::create();
-        CC_BREAK_IF(!_welcomeLayer);
-        this->addChild(_welcomeLayer);
-        bRet = true;
-    } while (0);
-    return bRet;
+	if (!Scene::init())
+	{
+		return false;
+	}
+	auto _welcomeLayer = WelcomeLayer::create();
+	this->addChild(_welcomeLayer);
+	return true;
 }

@@ -7,6 +7,7 @@
 //
 
 #include "BirdSprite.h"
+#include "AtlasLoader.h"
 
 BirdSprite::BirdSprite(){}
 
@@ -71,7 +72,7 @@ void BirdSprite::die() {
     }
 }
 
-Animation* BirdSprite::createAnimation(const char *fmt, int count, float fps) {
+Animation *BirdSprite::createAnimation(const char *fmt, int count, float fps) {
     Animation *animation = Animation::create();
     animation->setDelayPerUnit(1/fps);
     for (int i = 0; i < count; i++){
