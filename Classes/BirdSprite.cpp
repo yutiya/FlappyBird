@@ -43,7 +43,7 @@ bool BirdSprite::createBird()
         Animate *animate = Animate::create(animation);
         this->idleAction = RepeatForever::create(animate);
         
-        ActionInterval *up = CCMoveBy::create(0.4f,Point(0, 8));
+        ActionInterval *up = MoveBy::create(0.4f,Point(0, 8));
         ActionInterval *upBack= up->reverse();
         this->swingAction = RepeatForever::create(Sequence::create(up, upBack, NULL));
         return true;
@@ -76,7 +76,7 @@ Animation *BirdSprite::createAnimation(const char *fmt, int count, float fps) {
     Animation *animation = Animation::create();
     animation->setDelayPerUnit(1/fps);
     for (int i = 0; i < count; i++){
-        const char *filename = String::createWithFormat(fmt, i)->getCString();
+        const char *filename = __String::createWithFormat(fmt, i)->getCString();
         SpriteFrame *frame = AtlasLoader::getInstance()->getSpriteFrameByName(filename);
         animation->addSpriteFrame(frame);
     }

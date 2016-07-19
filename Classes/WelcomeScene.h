@@ -11,17 +11,31 @@
 
 #include "cocos2d.h"
 #include "AtlasLoader.h"
+#include "BirdSprite.h"
 
 USING_NS_CC;
 using namespace std;
 
-class WelcomeScene : public Scene
+
+const int START_BUTTON_TAG = 998;
+
+class WelcomeScene : public Layer
 {
 public:
+    static Scene *createScene();
+    
     WelcomeScene();
     ~WelcomeScene();
-    bool virtual init();
+    virtual bool init();
     CREATE_FUNC(WelcomeScene);
+private:
+    void menuStartCallback(Ref *sender);
+    void scrollLand(float dt);
+    
+    Sprite *land1;
+    Sprite *land2;
+
+    BirdSprite *bird;
 };
 
 #endif /* WelcomeScene_h */
