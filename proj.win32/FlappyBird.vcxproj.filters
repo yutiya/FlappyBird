@@ -27,9 +27,6 @@
     <ClCompile Include="..\Classes\WelcomeScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\WelcomeLayer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\BirdSprite.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -37,6 +34,15 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OptionLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NumberSeries.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StatusLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,9 +62,6 @@
     <ClInclude Include="..\Classes\WelcomeScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\WelcomeLayer.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\BirdSprite.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -66,6 +69,18 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OptionLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\define.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NumberSeries.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StatusLayer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

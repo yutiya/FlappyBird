@@ -9,9 +9,6 @@
 #ifndef define_h
 #define define_h
 
-#define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
-#define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
-
 const int UP_PIP = 21;
 
 const int DOWN_PIP = 12;

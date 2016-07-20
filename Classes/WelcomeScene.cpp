@@ -110,7 +110,8 @@ void WelcomeScene::menuStartCallback(Ref *sender)
 {
     SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
     this->bird->stopAllActions();
-    this->removeChildByTag(BIRD_SPRITE_TAG);
+	this->removeChildByTag(BIRD_SPRITE_TAG);
+	this->unschedule(schedule_selector(WelcomeScene::scrollLand));
     
     auto scene = GameScene::createScene();
     TransitionScene *transition = TransitionFade::create(1, scene);

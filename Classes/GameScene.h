@@ -6,6 +6,7 @@
 #include "cocos2d.h"
 #include "define.h"
 #include "BirdSprite.h"
+#include "OptionLayer.h"
 
 USING_NS_CC;
 using namespace std;
@@ -23,7 +24,7 @@ public:
     virtual void onGameEnd(int curScore, int bestScore) = 0;
 };
 
-class GameScene : public Layer
+class GameScene : public Layer, public OptionDelegate
 {
 public:
     static Scene *createScene();
@@ -31,11 +32,11 @@ public:
 	GameScene();
 	~GameScene();
 	virtual bool init();
-	void restart();
+	void restartGame();
 	CREATE_FUNC(GameScene);
-    void onTouch();
-    void setPhyWorld(PhysicsWorld *world);
+	void onTouch();
     void update(float delta);
+	CC_SYNTHESIZE(StatusDelegate*, delegator, Delegator);
 private:
     Scene *gameScene;
     void rotateBird();

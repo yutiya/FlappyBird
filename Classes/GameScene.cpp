@@ -8,8 +8,10 @@
 
 #include "GameScene.h"
 #include "BackgroundLayer.h"
+#include "OptionLayer.h"
 #include "AtlasLoader.h"
 #include "SimpleAudioEngine.h"
+#include "StatusLayer.h"
 
 using namespace CocosDenshion;
 
@@ -17,15 +19,28 @@ Scene *GameScene::createScene()
 {
     auto scene = Scene::createWithPhysics();
     scene->getPhysicsWorld()->setGravity(Vect(0, -900));
-    
+	//背景
     auto backgroundLayer = BackgroundLayer::create();
-    scene->addChild(backgroundLayer);
+    //状态
+	auto statusLayer = StatusLayer::create();
+	//游戏
+    auto gameLayer = GameScene::create();
+	gameLayer->world = scene->getPhysicsWorld();
+	gameLayer->setDelegator(statusLayer);
+	gameLayer->gameScene = scene;
 
-    auto layer = GameScene::create();
-    layer->gameScene = scene;
+	// 触摸事件
+	auto optionLayer = OptionLayer::create();
+	optionLayer->setDelegator(gameLayer);
+	
+	scene->addChild(backgroundLayer);
+
+	scene->addChild(gameLayer);
     
-    scene->addChild(layer);
-    
+	scene->addChild(statusLayer);
+
+	scene->addChild(optionLayer);
+
     return scene;
 }
 
@@ -50,13 +65,14 @@ bool GameScene::init()
     body->setDynamic(true);
     body->setLinearDamping(.0f);
     body->setGravityEnable(false);
+	body->setVelocity(Vect(0, origin.y + visiableSize.height/2 + 5));
     this->bird->setPhysicsBody(body);
     this->bird->setPosition(origin.x + visiableSize.width*1/3-5, origin.y + visiableSize.height/2+5);
     this->bird->idle();
     this->addChild(this->bird);
     
+	// Add ground
     this->groundNode = Node::create();
-    
     float landHeight = BackgroundLayer::getLandHeight();
     auto groundBody = PhysicsBody::create();
     groundBody->addShape(PhysicsShapeBox::create(Size(288, landHeight)));
@@ -83,8 +99,18 @@ bool GameScene::init()
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-    
+
     return true;
+}
+
+void GameScene::restartGame()
+{
+	this->bird->stopAllActions();
+	this->removeChildByTag(BIRD_SPRITE_TAG);
+
+	auto scene = GameScene::createScene();
+	TransitionScene *transition = TransitionFade::create(1, scene);
+	Director::getInstance()->replaceScene(transition);
 }
 
 bool GameScene::onContactBegin(const PhysicsContact& contact) {
@@ -115,10 +141,10 @@ void GameScene::onTouch() {
     if(this->gameStatus == GAME_STATUS_OVER) {
         return;
     }
-    
     SimpleAudioEngine::getInstance()->playEffect("sfx_wing.ogg");
     if(this->gameStatus == GAME_STATUS_READY) {
-//        this->delegator->onGameStart();
+		this->bird->getPhysicsBody()->setGravityEnable(true);
+        this->delegator->onGameStart();
         this->bird->fly();
         this->gameStatus = GAME_STATUS_START;
         this->createPips();
@@ -177,7 +203,7 @@ void GameScene::checkHit() {
             if (pip->getPositionX() < this->bird->getPositionX()) {
                 SimpleAudioEngine::getInstance()->playEffect("sfx_point.ogg");
                 this->score ++;
-//                this->delegator->onGamePlaying(this->score);
+                this->delegator->onGamePlaying(this->score);
                 pip->setTag(PIP_PASS);
             }
         }
@@ -189,15 +215,15 @@ void GameScene::gameOver() {
         return;
     }
     SimpleAudioEngine::getInstance()->playEffect("sfx_hit.ogg");
-    /*
+    
     //get the best score
-    int bestScore = UserRecord::getInstance()->readIntegerFromUserDefault("best_score");
-    //update the best score
-    if(this->score > bestScore){
-        UserRecord::getInstance()->saveIntegerToUserDefault("best_score",this->score);
-    }
-    this->delegator->onGameEnd(this->score, bestScore);
-     */
+    //int bestScore = UserRecord::getInstance()->readIntegerFromUserDefault("best_score");
+    ////update the best score
+    //if(this->score > bestScore){
+    //    UserRecord::getInstance()->saveIntegerToUserDefault("best_score",this->score);
+    //}
+    //this->delegator->onGameEnd(this->score, bestScore);
+    
     this->unschedule(shiftLand);
     SimpleAudioEngine::getInstance()->playEffect("sfx_die.ogg");
     this->bird->die();
@@ -215,6 +241,6 @@ void GameScene::birdSpriteFadeOut(){
 }
 
 void GameScene::birdSpriteRemove(){
-    this->bird->setRotation(0);
+    //this->bird->setRotation(0);
     this->removeChild(this->bird);
 }
