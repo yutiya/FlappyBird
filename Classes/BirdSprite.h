@@ -20,8 +20,6 @@ typedef enum {
     ACTION_STATE_DIE
 } ActionState;
 
-const int BIRD_SPRITE_TAG = 998;
-
 class BirdSprite : public Sprite
 {
 public:

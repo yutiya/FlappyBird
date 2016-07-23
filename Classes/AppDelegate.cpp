@@ -51,7 +51,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // Set the design resolution
 	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::SHOW_ALL);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	glview->setFrameSize(designResolutionSize.width, designResolutionSize.height);
+#endif
 	/*
 	Size frameSize = glview->getFrameSize();
     // if the frame's height is larger than the height of medium size.

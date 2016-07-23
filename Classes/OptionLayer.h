@@ -20,6 +20,8 @@ public:
 	~OptionLayer();
 
 	virtual bool init();
+    virtual void onEnter();
+    virtual void onExit();
 	CREATE_FUNC(OptionLayer);
 
 	void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);

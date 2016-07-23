@@ -63,6 +63,9 @@
 		EC114A7A1D3A18E50004F4D6 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EC114A791D3A18E50004F4D6 /* sounds */; };
 		EC114A7D1D3A19AD0004F4D6 /* WelcomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC114A7B1D3A19AD0004F4D6 /* WelcomeScene.cpp */; };
 		EC114A861D3A20E30004F4D6 /* BirdSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC114A841D3A20E30004F4D6 /* BirdSprite.cpp */; };
+		ECA9D7421D42FDEB00381210 /* NumberSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9D73E1D42FDEB00381210 /* NumberSeries.cpp */; };
+		ECA9D7431D42FDEB00381210 /* OptionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9D7401D42FDEB00381210 /* OptionLayer.cpp */; };
+		ECA9D7471D430DC000381210 /* UserRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9D7451D430DC000381210 /* UserRecord.cpp */; };
 		ECAB7C0F1D3E0D0B00B848E5 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB7C0D1D3E0D0B00B848E5 /* GameScene.cpp */; };
 		ECAB7C131D3E0E6100B848E5 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB7C111D3E0E6100B848E5 /* BackgroundLayer.cpp */; };
 		ECAB7C251D3E4A5F00B848E5 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB7C231D3E4A5F00B848E5 /* StatusLayer.cpp */; };
@@ -162,6 +165,12 @@
 		EC114A7C1D3A19AD0004F4D6 /* WelcomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeScene.h; sourceTree = "<group>"; };
 		EC114A841D3A20E30004F4D6 /* BirdSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BirdSprite.cpp; sourceTree = "<group>"; };
 		EC114A851D3A20E30004F4D6 /* BirdSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdSprite.h; sourceTree = "<group>"; };
+		ECA9D73E1D42FDEB00381210 /* NumberSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumberSeries.cpp; sourceTree = "<group>"; };
+		ECA9D73F1D42FDEB00381210 /* NumberSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberSeries.h; sourceTree = "<group>"; };
+		ECA9D7401D42FDEB00381210 /* OptionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionLayer.cpp; sourceTree = "<group>"; };
+		ECA9D7411D42FDEB00381210 /* OptionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionLayer.h; sourceTree = "<group>"; };
+		ECA9D7451D430DC000381210 /* UserRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserRecord.cpp; sourceTree = "<group>"; };
+		ECA9D7461D430DC000381210 /* UserRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRecord.h; sourceTree = "<group>"; };
 		ECAB7C0D1D3E0D0B00B848E5 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		ECAB7C101D3E0D3100B848E5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		ECAB7C111D3E0E6100B848E5 /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundLayer.cpp; sourceTree = "<group>"; };
@@ -376,6 +385,8 @@
 				ECAB7C121D3E0E6100B848E5 /* BackgroundLayer.h */,
 				ECAB7C231D3E4A5F00B848E5 /* StatusLayer.cpp */,
 				ECAB7C241D3E4A5F00B848E5 /* StatusLayer.h */,
+				ECA9D7401D42FDEB00381210 /* OptionLayer.cpp */,
+				ECA9D7411D42FDEB00381210 /* OptionLayer.h */,
 			);
 			name = Layer;
 			sourceTree = "<group>";
@@ -394,6 +405,10 @@
 			children = (
 				EC114A5F1D3A08DA0004F4D6 /* AtlasLoader.cpp */,
 				EC114A601D3A08DA0004F4D6 /* AtlasLoader.h */,
+				ECA9D73E1D42FDEB00381210 /* NumberSeries.cpp */,
+				ECA9D73F1D42FDEB00381210 /* NumberSeries.h */,
+				ECA9D7451D430DC000381210 /* UserRecord.cpp */,
+				ECA9D7461D430DC000381210 /* UserRecord.h */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -551,12 +566,15 @@
 				EC114A7D1D3A19AD0004F4D6 /* WelcomeScene.cpp in Sources */,
 				EC114A861D3A20E30004F4D6 /* BirdSprite.cpp in Sources */,
 				ECAB7C251D3E4A5F00B848E5 /* StatusLayer.cpp in Sources */,
+				ECA9D7421D42FDEB00381210 /* NumberSeries.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EC114A611D3A08DA0004F4D6 /* AtlasLoader.cpp in Sources */,
+				ECA9D7431D42FDEB00381210 /* OptionLayer.cpp in Sources */,
 				EC114A771D3A15AE0004F4D6 /* LoadingScene.cpp in Sources */,
 				ECAB7C131D3E0E6100B848E5 /* BackgroundLayer.cpp in Sources */,
 				ECAB7C0F1D3E0D0B00B848E5 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				ECA9D7471D430DC000381210 /* UserRecord.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +622,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../cocos2d/cocos",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 					"$(SRCROOT)/../Classes",
@@ -639,6 +658,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../cocos2d/cocos",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 					"$(SRCROOT)/../Classes",

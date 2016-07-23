@@ -16,7 +16,7 @@ void NumberSeries::loadNumber(const char *fmt, int base /* = 0 */)
 {
 	for (int i = base; i < 10 + base; i++)
 	{
-		const char *fileName = String::createWithFormat(fmt, i)->getCString();
+		const char *fileName = __String::createWithFormat(fmt, i)->getCString();
 		auto frame = AtlasLoader::getInstance()->getSpriteFrameByName(fileName);
 		numberSeries.push_back(frame);
 	}

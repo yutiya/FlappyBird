@@ -95,7 +95,7 @@ void StatusLayer::blinkFullScreen(){
 	auto fadeOut = FadeOut::create(0.1f);
 	auto fadeIn = FadeIn::create(0.1f);
 	auto blinkAction = Sequence::create(fadeIn, fadeOut, NULL);
-	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInGameOver, this));
+	CallFunc *actionDone = CallFunc::create(CC_CALLBACK_0(StatusLayer::fadeInGameOver, this));
 	auto sequence = Sequence::createWithTwoActions(blinkAction, actionDone);
 	whiteSprite->stopAllActions();
 	whiteSprite->runAction(sequence);
@@ -109,7 +109,7 @@ void StatusLayer::fadeInGameOver(){
 	auto gameoverFadeIn = FadeIn::create(0.5f);
 
 	// Start next action
-	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::jumpToScorePanel, this));
+	CallFunc *actionDone = CallFunc::create(CC_CALLBACK_0(StatusLayer::jumpToScorePanel, this));
 	auto sequence = Sequence::createWithTwoActions(gameoverFadeIn, actionDone);
 	gameoverSprite->stopAllActions();
 	gameoverSprite->runAction(sequence);

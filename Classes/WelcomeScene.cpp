@@ -88,7 +88,6 @@ bool WelcomeScene::init()
     //∑…œË–°ƒÒ
     this->bird = BirdSprite::getInstance();
     this->bird->createBird();
-    this->bird->setTag(BIRD_SPRITE_TAG);
     this->bird->setPosition(Point(origin.x + visiableSize.width / 2, origin.y + visiableSize.height * 3 / 5 - 10));
     this->bird->idle();
     this->addChild(this->bird);
@@ -110,7 +109,7 @@ void WelcomeScene::menuStartCallback(Ref *sender)
 {
     SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
     this->bird->stopAllActions();
-	this->removeChildByTag(BIRD_SPRITE_TAG);
+	this->removeChild(this->bird);
 	this->unschedule(schedule_selector(WelcomeScene::scrollLand));
     
     auto scene = GameScene::createScene();

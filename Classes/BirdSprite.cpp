@@ -38,7 +38,8 @@ bool BirdSprite::init()
 bool BirdSprite::createBird()
 {
     this->createBirdByRandom();
-    if (Sprite::initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(this->birdName))) {
+    if (this->initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(this->birdName)))
+    {
         Animation *animation = this->createAnimation(this->birdNameFormat.c_str(), 3, 10);
         Animate *animate = Animate::create(animation);
         this->idleAction = RepeatForever::create(animate);
@@ -62,7 +63,6 @@ void BirdSprite::idle() {
 void BirdSprite::fly() {
     if(changeState(ACTION_STATE_FLY)) {
         this->stopAction(swingAction);
-        //this->getPhysicsBody()->setGravityEnable(true);
     }
 }
 

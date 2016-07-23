@@ -32,6 +32,8 @@ public:
 	GameScene();
 	~GameScene();
 	virtual bool init();
+    virtual void onEnter();
+    virtual void onExit();
 	void restartGame();
 	CREATE_FUNC(GameScene);
 	void onTouch();
@@ -45,11 +47,9 @@ private:
     void checkHit();
     void birdSpriteFadeOut();
     void birdSpriteRemove();
-    PhysicsWorld *world;
     GameStatus gameStatus;
     int score;
     BirdSprite *bird;
-    Node *groundNode;
     vector<Node *> pips;
     Sprite *landSprite1, *landSprite2;
     SEL_SCHEDULE shiftLand;
