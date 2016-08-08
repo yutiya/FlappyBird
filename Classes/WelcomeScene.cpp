@@ -86,10 +86,9 @@ bool WelcomeScene::init()
     copyright->setPosition(Point(origin.x + visiableSize.width / 2, origin.y + visiableSize.height / 6));
     this->addChild(copyright, 10);
     //∑…œË–°ƒÒ
-    this->bird = BirdSprite::getInstance();
-    this->bird->createBird();
+	this->bird = BirdSprite::getInstance()->createBird();
     this->bird->setPosition(Point(origin.x + visiableSize.width / 2, origin.y + visiableSize.height * 3 / 5 - 10));
-    this->bird->idle();
+	BirdSprite::getInstance()->idle(this->bird);
     this->addChild(this->bird);
     
 	return true;
@@ -108,7 +107,7 @@ void WelcomeScene::scrollLand(float dt){
 void WelcomeScene::menuStartCallback(Ref *sender)
 {
     SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
-    this->bird->stopAllActions();
+	BirdSprite::getInstance()->die(this->bird);
 	this->removeChild(this->bird);
 	this->unschedule(schedule_selector(WelcomeScene::scrollLand));
     

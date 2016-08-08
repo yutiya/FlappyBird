@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\NumberSeries.cpp" />
     <ClCompile Include="..\Classes\OptionLayer.cpp" />
     <ClCompile Include="..\Classes\StatusLayer.cpp" />
+    <ClCompile Include="..\Classes\UserRecord.cpp" />
     <ClCompile Include="..\Classes\WelcomeScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -167,6 +168,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\NumberSeries.h" />
     <ClInclude Include="..\Classes\OptionLayer.h" />
     <ClInclude Include="..\Classes\StatusLayer.h" />
+    <ClInclude Include="..\Classes\UserRecord.h" />
     <ClInclude Include="..\Classes\WelcomeScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

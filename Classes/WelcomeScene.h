@@ -35,7 +35,7 @@ private:
     Sprite *land1;
     Sprite *land2;
 
-    BirdSprite *bird;
+    Sprite *bird;
 };
 
 #endif /* WelcomeScene_h */

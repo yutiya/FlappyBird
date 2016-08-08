@@ -58,16 +58,9 @@ bool GameScene::init()
     this->gameStatus = GAME_STATUS_READY;
     this->score = 0;
     
-    this->bird = BirdSprite::getInstance();
-    this->bird->createBird();
-    PhysicsBody *body = PhysicsBody::create();
-    body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
-    body->setLinearDamping(.0f);
-    body->setGravityEnable(false);
-    body->setContactTestBitmask(0xFFFFFFFF);
-    this->bird->setPhysicsBody(body);
+	this->bird = BirdSprite::getInstance()->createBird();
     this->bird->setPosition(origin.x + visiableSize.width*1/3-5, origin.y + visiableSize.height/2+5);
-    this->bird->idle();
+	BirdSprite::getInstance()->idle(this->bird);
     this->addChild(this->bird);
     
 	// Add ground
@@ -101,7 +94,7 @@ bool GameScene::init()
 
 void GameScene::restartGame()
 {
-	this->bird->stopAllActions();
+	BirdSprite::getInstance() ->die(this->bird);
     this->removeChild(this->bird);
 
 	auto scene = GameScene::createScene();
@@ -141,9 +134,13 @@ void GameScene::onTouch() {
     }
     SimpleAudioEngine::getInstance()->playEffect("sfx_wing.ogg");
     if(this->gameStatus == GAME_STATUS_READY) {
-		this->bird->getPhysicsBody()->setGravityEnable(true);
+		PhysicsBody *body = PhysicsBody::create();
+		body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
+		body->setLinearDamping(.0f);
+		body->setContactTestBitmask(0xFFFFFFFF);
+		this->bird->setPhysicsBody(body);
         this->delegator->onGameStart();
-        this->bird->fly();
+		BirdSprite::getInstance()->fly(this->bird);
         this->gameStatus = GAME_STATUS_START;
         this->createPips();
     }
@@ -238,7 +235,7 @@ void GameScene::gameOver() {
     
     this->unschedule(shiftLand);
     SimpleAudioEngine::getInstance()->playEffect("sfx_die.ogg");
-    this->bird->die();
+	BirdSprite::getInstance()->die(this->bird);
     this->bird->setRotation(90);
     this->birdSpriteFadeOut();
     this->gameStatus = GAME_STATUS_OVER;

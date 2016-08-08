@@ -27,10 +27,10 @@ public:
     ~BirdSprite();
     static BirdSprite *getInstance();
     virtual bool init();
-    bool createBird();
-    void idle();
-    void fly();
-    void die();
+	Sprite* createBird();
+	void idle(Sprite *birdSprite);
+	void fly(Sprite *birdSprite);
+	void die(Sprite *birdSprite);
 protected:
     static Animation *createAnimation(const char *fmt, int count, float fps);
     void createBirdByRandom();

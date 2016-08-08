@@ -49,7 +49,7 @@ private:
     void birdSpriteRemove();
     GameStatus gameStatus;
     int score;
-    BirdSprite *bird;
+    Sprite *bird;
     vector<Node *> pips;
     Sprite *landSprite1, *landSprite2;
     SEL_SCHEDULE shiftLand;

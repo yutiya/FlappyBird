@@ -45,6 +45,9 @@
     <ClCompile Include="..\Classes\StatusLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UserRecord.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -81,6 +84,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StatusLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UserRecord.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
