@@ -1,4 +1,4 @@
--- print("AtlasLoader")
+--print("AtlasLoader")
 local _atlasData = {}
 
 local _atlasLoader = nil

@@ -36,7 +36,7 @@ function MainScene:loadingCallBack()
     for k in ipairs(audioData) do
         cc.SimpleAudioEngine:getInstance():preloadEffect(audioData[k])
     end
-    local scene = require("app.views.WelcomeScene"):create()
+    local scene = require("app.views.WelcomeScene"):createScene()
     local transition = cc.TransitionFade:create(1.3, scene)
     cc.Director:getInstance():replaceScene(transition)
 end
