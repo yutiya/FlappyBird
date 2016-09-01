@@ -102,6 +102,7 @@ function WelcomeScene:menuStartCallback(tag, sender)
 	cc.SimpleAudioEngine:getInstance():playEffect(oggPlay)
 	birdSprite:die(self.bird)
 	self:removeChild(self.bird)
+	self.bird = nil
 	director:getScheduler():unscheduleScriptEntry(self.scrollLandSchedule)
     local scene = require("app.views.GameScene"):createScene()
     local transition = cc.TransitionFade:create(1.3, scene)

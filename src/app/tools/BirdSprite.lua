@@ -26,12 +26,12 @@ end
 
 --随机生成小鸟
 local function createBirdByRandom(obj)
-	--[[if band(obj.isFirstTime, 1) then
+	if bit.band(obj.isFirstTime, 1) then
 		obj.isFirstTime = 2
-	elseif band(obj.isFirstTime, 2) then
+	elseif bit.band(obj.isFirstTime, 2) then
 		obj.isFirstTime = 1
 		return
-	end]]
+	end
 	math.randomseed(os.time())
 	local type = math.random(3) - 1
 	if type == 0 then

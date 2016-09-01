@@ -3,6 +3,7 @@ local _number = nil
 cc.exports.Gravity = { GRAVITY_CENTER = 1, GRAVITY_LEFT = 2, GRAVITY_RIGHT = 3 }
 
 local Number = class("Number", cc.Object)
+local atlasLoader = require("app.tools.AtlasLoader"):getInstance()
 
 function Number:getInstance()
     if _number == nil then
@@ -19,7 +20,7 @@ function Number:ctor()
 	self.numberContainer = {}
 end
 
-function Number:loadNum(name, fmt, base)
+function Number:loadNumber(name, fmt, base)
 	local numberSeries = require("app.tools.NumberSeries"):create()
 	numberSeries:loadNumber(fmt, base)
 	self.numberContainer[name] = numberSeries
@@ -27,8 +28,9 @@ end
 
 function Number:convert(name, number, gravity)
 	local numberSeries = self.numberContainer[name]
+	local numberZero = nil
 	if (number == 0) then
-		local numberZero = cc.Sprite:createWithSpriteFrame(numberSeries:at(0))
+		numberZero = cc.Sprite:createWithSpriteFrame(numberSeries:at(0))
 		numberZero:setAnchorPoint({ x = 0.5, y = 0 })
 		return numberZero
 	end
@@ -36,18 +38,17 @@ function Number:convert(name, number, gravity)
 	local totalWidth = 0
 	local temp = nil
 	local sprite = nil
-	while(number) 
+	while(number > 0) 
 	do
-		temp = number % 10
-		number = number / 10
+		temp = math.floor(number % 10)
+		number = math.floor(number / 10)
 		sprite = cc.Sprite:createWithSpriteFrame(numberSeries:at(temp))
 		totalWidth = totalWidth + sprite:getContentSize().width
 		numberNode:addChild(sprite)
 	end
 
-	local numberZero = Sprite:createWithSpriteFrame(numberSeries:at(0))
+	numberZero = cc.Sprite:createWithSpriteFrame(numberSeries:at(0))
 	numberNode:setContentSize({ width = totalWidth, height = numberZero:getContentSize().height })
-
 	local singleWidth = totalWidth / (numberNode:getChildrenCount())
 	local index = nil
 	local offLength = 0
@@ -56,7 +57,7 @@ function Number:convert(name, number, gravity)
 		index = numberNode:getChildrenCount() / 2
 		for k in ipairs(children) do
 			children[k]:setAnchorPoint({ x = 0.5, y = 0 })
-			offLength = singleWidth * (index)
+			offLength = singleWidth * index
 			index = index - 1
 			children[k]:setPositionX(offLength)
 		end

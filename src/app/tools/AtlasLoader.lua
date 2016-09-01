@@ -5,7 +5,7 @@ local _atlasLoader = nil
 local imageName = "atlas.png"
 local fileName = "atlas.txt"
 
-local AtlasLoader = class("AtlasLoader")
+local AtlasLoader = class("AtlasLoader", cc.Object)
 
 --AtlasLoader._index = AtlasLoader
 
@@ -24,14 +24,12 @@ end
 
 --生成sprite lua file
 local function generateSpriteFrameCache()
-	print("AtlasLoader generateSpriteFrameCache")
-	local textureAtlas = cc.Director:getInstance():getTextureCache():addImage(imageName)
+	-- print("AtlasLoader generateSpriteFrameCache")
 	local atlasFileData = cc.FileUtils:getInstance():getStringFromFile(fileName)
 	local pos = string.find(atlasFileData, "\n")
 	local line = string.sub(atlasFileData, 0, pos)
 	local atlasFileData = string.sub(atlasFileData, pos+1, string.len(atlasFileData))
 	local tmpSprite
-	local rect
 	while (line ~= "")
 	do
 		tmpSprite = {}
@@ -43,8 +41,7 @@ local function generateSpriteFrameCache()
 		if(tmpSprite[1] == "land") then
 			xSprite = xSprite + 1
 		end
-		rect = { width = tmpSprite[2], height = tmpSprite[3], x = xSprite, y = ySprite }
-		_atlasData[tmpSprite[1]] = cc.SpriteFrame:createWithTexture(textureAtlas, rect)
+		_atlasData[tmpSprite[1]] = { width = tmpSprite[2], height = tmpSprite[3], x = xSprite, y = ySprite }
 		--计算下一行,找不到为nil
 		pos = string.find(atlasFileData, "\n")
 		if(pos == nil) then
@@ -60,7 +57,8 @@ function AtlasLoader:ctor()
 end
 
 function AtlasLoader:getSpriteFrameByName(name)
-	return _atlasData[name]
+	local textureAtlas = cc.Director:getInstance():getTextureCache():addImage(imageName)
+	return cc.SpriteFrame:createWithTexture(textureAtlas, _atlasData[name])
 end
 
 return AtlasLoader
