@@ -64,7 +64,7 @@ private:
     
     void blinkAction();
     
-    void menuRestartCallback(Object *sender);
+	void menuRestartCallback(Ref *sender);
     
     Sprite *scoreSprite;
     

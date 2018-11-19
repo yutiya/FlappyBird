@@ -253,7 +253,7 @@ string StatusLayer::getMedalsName(int score){
 	return medalsName;
 }
 
-void StatusLayer::menuRestartCallback(Object* pSender){
+void StatusLayer::menuRestartCallback(Ref* pSender){
 	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
 	auto scene = GameScene::createScene();
 	TransitionScene *transition = TransitionFade::create(1, scene);
